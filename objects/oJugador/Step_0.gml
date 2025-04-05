@@ -66,20 +66,8 @@ if accel_final_v < accel
 }
 vsp = accel_final_v * last_v;
 
-//diag funciona pal pico no tiene aceleración pero prefiero eso 
-//antes que se sume la velocidad horizontal y vertical sin vector
-if hmove != 0 or vmove != 0
-{
-	//direccion a donde se está moviendo
-	var dir = point_direction(0, 0, hmove, vmove);
-	//distancia que se está moviendo
-	hsp = hsp * 0.707
-	vsp = vsp * 0.707
-	
-	x += hsp;
-	y += vsp;
-}
-
+x += hsp;
+y += vsp;
 //sprites
 image_speed = 1;
 //caminar
