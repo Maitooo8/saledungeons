@@ -5,7 +5,12 @@ var key_left = keyboard_check(ord("A"));
 
 //agarrar teclas e indicar velocidad horizontal y vertical
 //horizontal
+
 var hmove = key_right - key_left
+var vmove = key_down - key_up
+
+if hmove != 0 facing = hmove
+
 if hmove != 0
 	{
 		if last_h != hmove
@@ -33,7 +38,6 @@ if accel_final_h < accel
 hsp = accel_final_h * last_h
 
 //vertical
-var vmove = key_down - key_up
 if vmove != 0
 	{
 		if last_v != vmove
