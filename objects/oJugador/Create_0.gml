@@ -1,0 +1,9 @@
+accel = 0.5
+accel_final_h = 0
+accel_final_v = 0
+accel_max = 2
+last_h = 0
+last_v = 0
+hsp = 0
+vsp = 0
+dsp = 0
