@@ -6,6 +6,7 @@ var key_left = keyboard_check(ord("A"));
 //agarrar teclas e indicar velocidad horizontal y vertical
 var hmove = key_right - key_left;
 var vmove = key_down - key_up;
+var dmove
 //determinar dirección donde está mirando
 if hmove != 0
 {
@@ -36,7 +37,7 @@ if accel_final_h < accel
 	accel_final_h = 0;
 	last_h = 0;
 }
-hmove = accel_final_h * last_h;
+hsp = accel_final_h * last_h;
 
 //vertical
 if vmove != 0
@@ -63,60 +64,21 @@ if accel_final_v < accel
 	accel_final_v = 0;
 	last_v = 0;
 }
-vmove = accel_final_v * last_v;
+vsp = accel_final_v * last_v;
 
-//diagonal
-
-//diag
-//if hmove != 0 or vmove != 0
-//{
-//	//direccion a donde se está moviendo
-//	var dir = point_direction(0, 0, hmove, vmove);
-//	//distancia que se está moviendo
-//	hmove = lengthdir_x(accel_max, dir);
-//	vmove = lengthdir_y(accel_max, dir);
-//}
-
-
-
-
-//vieja
-//if hmove != 0 or vmove != 0
-//{
-//	//direccion a donde se está moviendo
-//	var dir = point_direction(0, 0, hmove, vmove);
-//	//distancia que se está moviendo
-//	hmove = lengthdir_x(accel_max, dir);
-//	vmove = lengthdir_y(accel_max, dir);
-//}
-
-//COLISION><!!!!!!
-
-
-////VIEJA
-////vertical
-//if (place_meeting(x + hsp, y, oBloque))
-//	{
-//		while(!place_meeting(x + sign(hsp), y, oBloque))
-//		{
-//			x = x + sign(hsp);
-//		}
-//	hmove = 0;
-//	}
-
-////horizontal
-//if (place_meeting(x, y + vsp, oBloque))
-//	{
-//		while(!place_meeting(x, y + sign(vsp), oBloque))
-//		{
-//			y = y + sign(vsp);
-//		}
-//	vmove = 0;
-//	}
-
-//ejecutar movimiento
-x += hmove;
-y += vmove;
+//diag funciona pal pico no tiene aceleración pero prefiero eso 
+//antes que se sume la velocidad horizontal y vertical sin vector
+if hmove != 0 or vmove != 0
+{
+	//direccion a donde se está moviendo
+	var dir = point_direction(0, 0, hmove, vmove);
+	//distancia que se está moviendo
+	hsp = hsp * 0.707
+	vsp = vsp * 0.707
+	
+	x += hsp;
+	y += vsp;
+}
 
 //sprites
 image_speed = 1;
