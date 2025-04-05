@@ -97,13 +97,12 @@ y += vmove
 
 //sprites
 image_speed = 1;
-
-//idle (quieto) NO FUNCIONA
+//caminar
 if hmove != 0 or vmove != 0
 	{
 		sprite_index = sJugadorCaminar
 	}
-	//caminando
+	//quieto
 	else
 	{
 		sprite_index = sJugadorIdle
